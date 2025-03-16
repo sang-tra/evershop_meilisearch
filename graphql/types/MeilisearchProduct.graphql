@@ -1,0 +1,29 @@
+"""
+Represents a product.
+"""
+type MeilisearchProduct {
+  id: Int!
+  uuid: String!
+  sku: String!
+  name: String!
+  description: JSON
+  shortDescription: JSON
+  metaTitle: String
+  metaDescription: String
+  metaKeywords: String
+  urlKey: String
+}
+
+"""
+Returns a collection of products.
+"""
+type MeilisearchProductCollection {
+  items: [MeilisearchProduct]
+  currentPage: Int!
+  total: Int!
+  currentFilters: [Filter]
+}
+
+extend type Query {
+  meilisearchProducts(filters: [FilterInput]): MeilisearchProductCollection
+}
